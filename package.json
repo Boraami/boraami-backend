@@ -1,0 +1,20 @@
+{
+  "name": "boraami",
+  "version": "1.0.0",
+  "description": "boraami backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Boraami/boraami-backend.git"
+  },
+  "author": "Simin and Natasha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Boraami/boraami-backend/issues"
+  },
+  "homepage": "https://github.com/Boraami/boraami-backend#readme"
+}
