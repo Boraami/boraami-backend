@@ -35,6 +35,7 @@ app.use( (req,res, next)=>{
 })
 
 app.use('/api/users', userRoutes);
+app.use('/api/users', userRoutes)
 
 
 app.listen(port, ()=>{
