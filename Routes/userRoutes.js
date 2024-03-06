@@ -29,7 +29,7 @@ router.post("/register", (req, res) => {
      if (!isValid) {
         return res.status(400).json(errors);
       }
-    const { userName, email, password } = req.body;
+    const { userName, email, password, password2 } = req.body;
     console.log(req.body);
     
     // check if user exists
