@@ -3,19 +3,35 @@ const express = require('express');
 const router = express.Router();
 
 const bcrypt = require('bcryptjs');
+const validateRegisterInput = require("../Validation/Register");
 
 //to-do validation against malicious(malicious)
 
 const User = require("../Models/user");
 
+
+//@Route GET api/users
+//@desc test route for cron-jon
+//@access public
+router.get("/test", (req,res)=>{
+    const { obj} = req.body;
+    console.log(obj)
+    res.json({"msg":"sucess"})
+})
+
 //@Route POST api/users/register
 //@desc registers a user
 //@access public
 router.post("/register", (req, res) => {
+
+     // Form validation
+     const { errors, isValid } = validateRegisterInput(req.body);
+     if (!isValid) {
+        return res.status(400).json(errors);
+      }
     const { userName, email, password } = req.body;
-
     console.log(req.body);
-
+    
     // check if user exists
     User.findOne({ email })
         .then(existingUser => {

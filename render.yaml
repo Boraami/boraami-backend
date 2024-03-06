@@ -1,4 +1,0 @@
-# render.yaml
-
-buildCommand: npm install pm2@latest && npm install
-startCommand: pm2-runtime start pm2.config.js
