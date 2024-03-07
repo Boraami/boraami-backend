@@ -5,7 +5,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const mongoSanitize = require('express-mongo-sanitize');
 
 //import routes
 const userRoutes = require('./Routes/userRoutes');
@@ -17,15 +18,15 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-mongoose.connect( process.env.dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology:true
-}).then(
+mongoose.connect( process.env.dbUrl).then(
     ()=> console.log("successfully connected to database")
 ).catch( err => console.log(err))
 
 //set up body parser
 app.use(bodyParser.json());
+
+//midlleware to check request bodys and remove suspicious characters like $ and . before executing querries
+app.use(mongoSanitize());
 
 //set up cors
 app.use( (req,res, next)=>{
